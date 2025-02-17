@@ -3,11 +3,11 @@ import {getUserByClerkId} from "@/utils/auth";
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 import Link from "next/link";
-import {analyze} from "@/utils/ai";
 import Questions from "@/components/questions";
 const getEntries = async () =>{
     const user = await getUserByClerkId()
-    const entries = await prisma.journalEntry.findMany({
+
+    return( await prisma.journalEntry.findMany({
         where: {
             userId: user.id,
         },
@@ -15,8 +15,7 @@ const getEntries = async () =>{
             createdAt: 'desc',
         },
 
-    })
-    return entries;
+    }));
 }
 
 

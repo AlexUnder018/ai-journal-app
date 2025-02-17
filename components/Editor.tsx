@@ -1,14 +1,13 @@
 'use client'
 
 import {useState} from "react";
-import {useAutosave, Autosave  } from "react-autosave";
+import {useAutosave  } from "react-autosave";
 import {updateEntry} from "@/utils/api";
 
 const Editor = ({entry}) => {
     const [value,setValue] = useState(entry.content)
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [analysis, setAnalysis] = useState(entry.Analysis)
-    const [issaved, setIssaved] = useState<boolean>(true)
     const {mood, summary, color, subject, negative} = analysis
     const analysisData = [
         {name:'Summary', value: summary},

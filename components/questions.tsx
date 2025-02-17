@@ -1,7 +1,5 @@
 'use client'
 import {useState} from "react";
-import {black} from "next/dist/lib/picocolors";
-import {a} from "js-tiktoken/dist/core-e44f7fdc";
 import {askQuestion} from "@/utils/api";
 
 const Questions = () => {
