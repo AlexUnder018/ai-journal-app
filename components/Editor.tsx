@@ -3,7 +3,7 @@
 import {useState} from "react";
 import {useAutosave  } from "react-autosave";
 import {updateEntry} from "@/utils/api";
-
+import WysiwygComponent from "./editorComponent"
 const Editor = ({entry}) => {
     const [value,setValue] = useState(entry.content)
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -22,6 +22,7 @@ const Editor = ({entry}) => {
             // debugger
             setIsLoading(true)
             const data = await updateEntry(entry.id, {content: value})
+            console.log(data)
             setAnalysis(data.Analysis)
             setIsLoading(false)
         },
@@ -32,11 +33,11 @@ const Editor = ({entry}) => {
         <div className={'w-full h-full grid grid-cols-3'}>
             <div className={"col-span-2"}>
             {isLoading && (<div>...loading</div>)}
-            <textarea
-                className={'w-full h-full p-8 text-xl outline-none'}
-                value={value}
-                onChange={e => setValue(e.target.value)}/>
-
+            {/*<textarea*/}
+            {/*    className={'w-full h-full p-8 text-xl outline-none'}*/}
+            {/*    value={value}*/}
+            {/*    onChange={e => setValue(e.target.value)}/>*/}
+                <WysiwygComponent data={value} onChange={setValue} />
             </div>
             <div className={'border-l border-black/10'}>
                 <div className={'px-6 py-10'} style={{backgroundColor: color}}>

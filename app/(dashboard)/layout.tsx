@@ -1,11 +1,14 @@
+'use client'
 import {UserButton} from "@clerk/nextjs";
 import Link from "next/link";
+import {styled} from "styled-components"
 const links = [
     {href: "/", label: "Home"},
     {href: "/journal", label: "Journal"},
     {href: "/history", label: "History"},
 
 ]
+
 const DashboardLayout = ({children} ) =>{
     return (
         <div className={"h-screen w-screen relative"}>
