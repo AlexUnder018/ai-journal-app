@@ -59,7 +59,7 @@ export const qa = async(question, entries) => {
             }
         )
     })
-    const model = new ChatOpenAI({apiKey: process.env.OPENAI_API_KEY, temperature:0, model: 'gpt-3.5-turbo'})
+    const model = new ChatOpenAI({apiKey: process.env.OPENAI_API_KEY, temperature:0, model: 'gpt-4o-mini'})
 
 
     const embeddings = new OpenAIEmbeddings()

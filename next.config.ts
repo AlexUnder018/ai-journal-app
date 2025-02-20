@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: true, // Ignore TypeScript errors during build
     },
+    compiler:{
+        styledComponents: true,
+    }
 };
 
 export default nextConfig;
