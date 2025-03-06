@@ -4,6 +4,7 @@ import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 import Link from "next/link";
 import Questions from "@/components/questions";
+
 const getEntries = async () =>{
     const user = await getUserByClerkId()
 
@@ -13,6 +14,9 @@ const getEntries = async () =>{
         },
         orderBy:{
             createdAt: 'desc',
+        },
+        include: {
+            Analysis: true,
         },
 
     }));
@@ -26,10 +30,11 @@ const JournalPage = async () =>{
         <div className={"p-10 bg-zinc-400/10 h-full"}>
             <h2 className={"text-3xl mb-8"}>Journal</h2>
             <Questions />
-            <div className={"mt-4 grid grid-cols-3 gap-4"}>
-                <NewEntryCard/>
+            <NewEntryCard/>
+            <div className={"mt-4 items-center justify-center grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4"}>
+
                 {entries.map((entry) => (
-                    <div key={entry.id}>
+                    <div className={'mb-4'} key={entry.id}>
                         <Link href={`/journal/${entry.id}`}>
                             <EntryCard entry={entry} />
                         </Link>

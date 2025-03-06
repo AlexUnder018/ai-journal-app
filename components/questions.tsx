@@ -1,7 +1,8 @@
 'use client'
 import {useState} from "react";
 import {askQuestion} from "@/utils/api";
-
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
 const Questions = () => {
     const [loading, setLoading] = useState(false);
     const [value, setValue] = useState('')
@@ -23,10 +24,12 @@ const Questions = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div className={'gap-1'}>
-                <input disabled={loading} value={value} type="text" placeholder="Any Questions?" onChange={onChange} className={'border border-black/20' +
-                    'px-4 py-2 text-lg rounded-lg'} />
-                <button disabled={loading} type={"submit"} className={'bg-blue-500 px-4 py-2 rounded-lg text-lg'}>Ask</button>
+                <div className={'gap-4 flex max-w-xl'}>
+                {/*<input disabled={loading} value={value} type="text" placeholder="Any Questions?" onChange={onChange} className={'border border-black/20' +*/}
+                {/*    'px-4 py-2 text-lg rounded-lg'} />*/}
+                    <Input disabled={loading} value={value} type={"text"} placeholder={"Any questions?"} onChange={onChange} />
+                {/*<button disabled={loading} type={"submit"} className={'bg-blue-500 px-4 py-2 rounded-lg text-lg'}>Ask</button>*/}
+                    <Button disabled={loading} type={"submit"} className={'bg-blue-500'}>Ask</Button>
 
                 </div>
             </form>

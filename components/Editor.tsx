@@ -4,6 +4,7 @@ import {useState} from "react";
 import {useAutosave  } from "react-autosave";
 import {updateEntry} from "@/utils/api";
 import WysiwygComponent from "./editorComponent"
+import {Textarea} from "@/components/ui/textarea";
 const Editor = ({entry}) => {
     const [value,setValue] = useState(entry.content)
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -37,7 +38,8 @@ const Editor = ({entry}) => {
             {/*    className={'w-full h-full p-8 text-xl outline-none'}*/}
             {/*    value={value}*/}
             {/*    onChange={e => setValue(e.target.value)}/>*/}
-                <WysiwygComponent data={value} onChange={setValue} />
+                <Textarea className={'w-full, h-full text-xl m-4'} value={value} onChange={e => setValue(e.target.value)}/>
+            {/*    <WysiwygComponent data={value} onChange={setValue} />*/}
             </div>
             <div className={'border-l border-black/10'}>
                 <div className={'px-6 py-10'} style={{backgroundColor: color}}>
